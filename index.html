@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kyran Janssen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&text=%E9%9B%A8%E9%96%93&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --accent: #c8402f;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: #faf8f4;
+        color: #1b1917;
+        font-family: "Instrument Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: #e4dfd7;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 1px;
+        transition: text-decoration-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      a:hover {
+        text-decoration-color: var(--accent);
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      ::selection {
+        background: #e4dfd7;
+      }
+      @keyframes wipeUp {
+        from {
+          transform: translateY(110%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      @keyframes sealIn {
+        from {
+          opacity: 0;
+          transform: scale(0.6);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation-duration: 0.01ms !important;
+          animation-delay: 0ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      .page {
+        min-height: 100vh;
+        position: relative;
+      }
+      .spine {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: clamp(14px, 4vw, 56px);
+        width: 1px;
+        background: #e4dfd7;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 clamp(32px, 9vw, 110px);
+      }
+      nav {
+        display: flex;
+        align-items: baseline;
+        justify-content: end;
+        gap: 24px;
+        padding-top: 44px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8a857e;
+      }
+      .navlinks {
+        display: flex;
+        gap: 32px;
+      }
+      .navlink {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #8a857e;
+        position: relative;
+        transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .navlink:hover {
+        color: #1b1917;
+      }
+      .navdot {
+        position: absolute;
+        left: -13px;
+        top: 4px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      header {
+        padding: clamp(120px, 18vh, 200px) 0 clamp(100px, 14vh, 160px) 0;
+      }
+      h1 {
+        margin: 0;
+        font-family: "Newsreader", serif;
+        font-weight: 400;
+        font-size: clamp(52px, 9.5vw, 118px);
+        line-height: 1.04;
+        letter-spacing: -0.015em;
+      }
+      h1 .clip {
+        display: block;
+        overflow: hidden;
+      }
+      h1 .line {
+        display: block;
+        animation: wipeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .seal {
+        display: inline-block;
+        width: 0.13em;
+        height: 0.13em;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-left: 0.18em;
+        animation: sealIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+      }
+      .lede {
+        overflow: hidden;
+        margin-top: 44px;
+      }
+      .lede p {
+        margin: 0;
+        animation: wipeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+        font-size: clamp(17px, 2vw, 21px);
+        line-height: 1.7;
+        max-width: 46ch;
+        color: #1b1917;
+      }
+      .emailrow {
+        overflow: hidden;
+        margin-top: 28px;
+      }
+      .emailrow-inner {
+        animation: wipeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .emailrow a {
+        font-size: 15px;
+      }
+      .copybtn {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8a857e;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: color 0.4s;
+      }
+      .copybtn:hover {
+        color: #1b1917;
+      }
+      section {
+        border-top: 1px solid #e4dfd7;
+        padding: clamp(72px, 10vh, 130px) 0 clamp(80px, 12vh, 150px) 0;
+      }
+      .eyebrow {
+        margin: 0 0 64px 0;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8a857e;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(48px, 6vw, 88px);
+      }
+      .rule {
+        height: 1px;
+        background: #e4dfd7;
+        margin-bottom: 32px;
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+      .num {
+        font-family: "Newsreader", serif;
+        font-size: 48px;
+        color: #8a857e;
+        line-height: 1;
+      }
+      .service h3 {
+        font-family: "Newsreader", serif;
+        font-weight: 500;
+        font-size: 27px;
+        margin: 20px 0 14px 0;
+      }
+      .service p {
+        margin: 0;
+        font-size: 15.5px;
+        line-height: 1.75;
+        color: #1b1917;
+        max-width: 44ch;
+      }
+      #work .eyebrow {
+        margin-bottom: 56px;
+      }
+      .worklist {
+        border-bottom: 1px solid #e4dfd7;
+      }
+      .workrow {
+        position: relative;
+        padding: 30px 0;
+        border-top: 1px solid #e4dfd7;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        outline-offset: 6px;
+        cursor: default;
+      }
+      .mark {
+        position: absolute;
+        left: -26px;
+        top: 42px;
+        width: 14px;
+        height: 2px;
+        background: var(--accent);
+        opacity: 0;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .workhead {
+        display: flex;
+        align-items: baseline;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .worktitle {
+        margin: 0;
+        font-family: "Newsreader", serif;
+        font-weight: 400;
+        font-size: clamp(23px, 3vw, 29px);
+        transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .spacer {
+        flex: 1;
+      }
+      .tag {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8a857e;
+      }
+      .year {
+        font-size: 13px;
+        color: #8a857e;
+        font-variant-numeric: tabular-nums;
+      }
+      .desc {
+        margin: 8px 0 0 0;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #8a857e;
+        max-width: 60ch;
+      }
+      .detailwrap {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition:
+          grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .detail {
+        margin: 0;
+        padding-top: 10px;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #1b1917;
+        max-width: 60ch;
+        overflow: hidden;
+      }
+      .colophon {
+        margin: 40px 0 0 0;
+        font-size: 14px;
+        color: #8a857e;
+        line-height: 1.7;
+      }
+      .colophon .kanji {
+        font-family: "Noto Serif JP", serif;
+        margin-right: 10px;
+      }
+      .colophon a {
+        color: #1b1917;
+      }
+      #about {
+        position: relative;
+        overflow: visible;
+      }
+      .glyph {
+        position: absolute;
+        right: -4%;
+        top: -40px;
+        font-family: "Noto Serif JP", serif;
+        font-size: clamp(220px, 34vw, 420px);
+        line-height: 1;
+        color: #1b1917;
+        opacity: 0.04;
+        pointer-events: none;
+        user-select: none;
+        will-change: transform;
+      }
+      .twocol {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+        gap: clamp(32px, 5vw, 72px);
+      }
+      .twocol p {
+        margin: 0 0 26px 0;
+        font-size: clamp(16px, 1.8vw, 18px);
+        line-height: 1.75;
+        max-width: 62ch;
+      }
+      .twocol p:last-child {
+        margin-bottom: 0;
+      }
+      #contact .pitch {
+        margin: 0 0 36px 0;
+        font-family: "Newsreader", serif;
+        font-size: clamp(24px, 3.4vw, 34px);
+        line-height: 1.4;
+        max-width: 24ch;
+      }
+      .contactlinks {
+        display: flex;
+        gap: 36px;
+        flex-wrap: wrap;
+      }
+      .contactlinks a {
+        font-size: 15px;
+      }
+      .pattern {
+        display: block;
+        margin-top: clamp(64px, 9vh, 110px);
+      }
+      footer {
+        border-top: 1px solid #e4dfd7;
+        padding: 32px 0 44px 0;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .footname {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8a857e;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: inline-block;
+      }
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="spine" aria-hidden="true"></div>
+      <div class="wrap">
+        <nav aria-label="Main">
+          <!-- <span class="brand">Kyran Janssen</span> -->
+          <div class="navlinks">
+            <a class="navlink" href="#work" data-nav="work"
+              ><span class="navdot" data-navdot aria-hidden="true"></span
+              >Work</a
+            >
+            <a class="navlink" href="#about" data-nav="about"
+              ><span class="navdot" data-navdot aria-hidden="true"></span
+              >About</a
+            >
+            <a class="navlink" href="#contact" data-nav="contact"
+              ><span class="navdot" data-navdot aria-hidden="true"></span
+              >Contact</a
+            >
+          </div>
+        </nav>
+
+        <header>
+          <h1>
+            <span class="clip"
+              ><span class="line" style="animation-delay: 0.08s"
+                >Kyran</span
+              ></span
+            >
+            <span class="clip"
+              ><span class="line" style="animation-delay: 0.16s"
+                >Janssen<span class="seal" aria-hidden="true"></span></span
+            ></span>
+          </h1>
+          <div class="lede">
+            <p>
+              Web and app development, and the automation behind it.<br />Netherlands,
+              working worldwide.
+            </p>
+          </div>
+          <div class="emailrow">
+            <div class="emailrow-inner">
+              <a href="mailto:kyran.janssen@proton.me"
+                >kyran.janssen@proton.me</a
+              >
+              <button class="copybtn" id="copyBtn" type="button">Copy</button>
+            </div>
+          </div>
+        </header>
+
+        <section aria-labelledby="wid-h">
+          <h2 id="wid-h" class="eyebrow" data-reveal>What I do</h2>
+          <div class="grid2">
+            <div class="service" data-reveal>
+              <div class="rule" data-rule></div>
+              <span class="num">01</span>
+              <h3>Building for the web</h3>
+              <p>
+                Product sites, web apps, ecommerce, platforms built on a CMS.
+                Next.js, TypeScript, React, Tailwind, Sanity. Design through
+                deploy.
+              </p>
+            </div>
+            <div class="service" data-reveal>
+              <div class="rule" data-rule></div>
+              <span class="num">02</span>
+              <h3>Automation and scraping</h3>
+              <p>
+                Large scale collection systems, structured enrichment, proxy
+                infrastructure. Pipelines that run tens of thousands to millions
+                of records cleanly. Python.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="work" aria-labelledby="work-h">
+          <h2 id="work-h" class="eyebrow" data-reveal>Selected work</h2>
+          <div class="worklist" id="worklist"></div>
+          <p class="colophon" data-reveal>
+            <span class="kanji" aria-hidden="true">雨</span>Several of these
+            live under <a href="#">Rainvalley</a>, my solo software studio.
+          </p>
+        </section>
+
+        <section id="about" aria-labelledby="about-h">
+          <span class="glyph" id="glyph-ma" aria-hidden="true">間</span>
+          <div class="twocol">
+            <h2
+              id="about-h"
+              class="eyebrow"
+              data-reveal
+              style="margin-bottom: 0"
+            >
+              About
+            </h2>
+            <div data-reveal>
+              <p>
+                Based in the Netherlands. Four years owning the frontend across
+                high traffic platforms, while building and shipping my own
+                products on the side, from comparison engines to coordination
+                software. I prefer software that lasts: built calmly, documented
+                properly, no ceremony. Contact If you have something worth
+                building, or worth automating, write.
+              </p>
+              <p>
+                Open to work, and to problems that are more interesting than
+                they look. Email is best.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-h">
+          <div class="twocol">
+            <h2
+              id="contact-h"
+              class="eyebrow"
+              data-reveal
+              style="margin-bottom: 0"
+            >
+              Contact
+            </h2>
+            <div data-reveal>
+              <p class="pitch">
+                If you have something worth building, or worth automating,
+                write.
+              </p>
+              <div class="contactlinks">
+                <a href="mailto:kyran.janssen@proton.me">Email</a>
+                <a href="https://linkedin.com/in/kyranjanssen">LinkedIn</a>
+                <a href="https://github.com/towa0">GitHub</a>
+              </div>
+            </div>
+          </div>
+          <svg
+            class="pattern"
+            aria-hidden="true"
+            width="100%"
+            height="72"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <pattern
+                id="seigaiha"
+                width="80"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <g fill="none" stroke="#1B1917" stroke-opacity="0.07">
+                  <circle cx="0" cy="0" r="38"></circle>
+                  <circle cx="0" cy="0" r="28"></circle>
+                  <circle cx="0" cy="0" r="18"></circle>
+                  <circle cx="0" cy="0" r="8"></circle>
+                  <circle cx="80" cy="0" r="38"></circle>
+                  <circle cx="80" cy="0" r="28"></circle>
+                  <circle cx="80" cy="0" r="18"></circle>
+                  <circle cx="80" cy="0" r="8"></circle>
+                  <circle cx="40" cy="20" r="38"></circle>
+                  <circle cx="40" cy="20" r="28"></circle>
+                  <circle cx="40" cy="20" r="18"></circle>
+                  <circle cx="40" cy="20" r="8"></circle>
+                  <circle cx="0" cy="40" r="38"></circle>
+                  <circle cx="0" cy="40" r="28"></circle>
+                  <circle cx="0" cy="40" r="18"></circle>
+                  <circle cx="0" cy="40" r="8"></circle>
+                  <circle cx="80" cy="40" r="38"></circle>
+                  <circle cx="80" cy="40" r="28"></circle>
+                  <circle cx="80" cy="40" r="18"></circle>
+                  <circle cx="80" cy="40" r="8"></circle>
+                </g>
+              </pattern>
+            </defs>
+            <rect width="100%" height="72" fill="url(#seigaiha)"></rect>
+          </svg>
+        </section>
+
+        <footer>
+          <span class="footname">Kyran Janssen &middot; 2026</span>
+          <span class="dot" aria-hidden="true"></span>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var WORKS = [
+          {
+            name: "Koffiemeister",
+            desc: "Coffee machine comparison platform.",
+            detail:
+              "Next.js + Sanity. 40+ machines, a personalised recommendation engine, and the content pipeline that keeps it current.",
+            year: "2024",
+            tag: "Product",
+          },
+          {
+            name: "StilteZorg",
+            desc: "Coordination service for families after a death at home.",
+            detail:
+              "Product design plus the operational automation behind it: intake, scheduling and follow up handled without manual work.",
+            year: "2025",
+            tag: "Product",
+          },
+          {
+            name: "Schouw",
+            desc: "Inspection reporting software for surveyors.",
+            detail:
+              "Structured reporting in the field, exports that hold up afterwards. Built to be boring in the right ways.",
+            year: "2025",
+            tag: "Product",
+          },
+          {
+            name: "112Huisdier",
+            desc: "Emergency pet care platform.",
+            detail:
+              "Migrated from WordPress to Next.js/Sanity: faster, editor friendly, cheaper to run.",
+            year: "2024",
+            tag: "Product",
+          },
+          {
+            name: "Data collection systems",
+            desc: "Scrapers, enrichment workflows and proxy infrastructure.",
+            detail:
+              "Clean datasets for pricing intelligence and research. 6M+ records across pipelines built to fail loudly and recover quietly.",
+            year: "2022+",
+            tag: "System",
+          },
+          {
+            name: "Client work",
+            desc: "Dutch web platforms and ecommerce builds.",
+            detail:
+              "Full lifecycle: UI, development, CMS setup, payments and integrations, SEO structure, ongoing support after launch.",
+            year: "2022+",
+            tag: "Client",
+          },
+        ];
+
+        var list = document.getElementById("worklist");
+        WORKS.forEach(function (item) {
+          var row = document.createElement("div");
+          row.className = "workrow";
+          row.setAttribute("data-work-row", "");
+          row.tabIndex = 0;
+          row.innerHTML =
+            '<span class="mark" data-mark aria-hidden="true"></span>' +
+            '<div class="workhead">' +
+            '<h3 class="worktitle" data-title></h3>' +
+            '<span class="spacer"></span>' +
+            '<span class="tag"></span>' +
+            '<span class="year"></span>' +
+            "</div>" +
+            '<p class="desc"></p>' +
+            '<div class="detailwrap" data-detail><p class="detail"></p></div>';
+          row.querySelector(".worktitle").textContent = item.name;
+          row.querySelector(".tag").textContent = item.tag;
+          row.querySelector(".year").textContent = item.year;
+          row.querySelector(".desc").textContent = item.desc;
+          row.querySelector(".detail").textContent = item.detail;
+          list.appendChild(row);
+        });
+
+        var copyBtn = document.getElementById("copyBtn");
+        var copyTimer;
+        copyBtn.addEventListener("click", function () {
+          navigator.clipboard
+            .writeText("kyran.janssen@proton.me")
+            .catch(function () {});
+          copyBtn.textContent = "Copied";
+          clearTimeout(copyTimer);
+          copyTimer = setTimeout(function () {
+            copyBtn.textContent = "Copy";
+          }, 2200);
+        });
+
+        var reduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        var ease = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+        var reveals = Array.prototype.slice.call(
+          document.querySelectorAll("[data-reveal]"),
+        );
+        var rules = Array.prototype.slice.call(
+          document.querySelectorAll("[data-rule]"),
+        );
+        if (!reduced) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                var el = e.target;
+                if (el.hasAttribute("data-rule")) {
+                  el.style.transition = "transform 0.8s " + ease;
+                  el.style.transform = "scaleX(1)";
+                } else {
+                  el.style.transition =
+                    "opacity 0.7s " + ease + ", transform 0.7s " + ease;
+                  el.style.opacity = "1";
+                  el.style.transform = "translateY(0) scale(1)";
+                }
+                io.unobserve(el);
+              });
+            },
+            { threshold: 0.15 },
+          );
+          reveals.concat(rules).forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          reveals.concat(rules).forEach(function (el) {
+            el.style.opacity = "1";
+            el.style.transform = "none";
+          });
+        }
+
+        document.querySelectorAll("[data-work-row]").forEach(function (row) {
+          var on = function () {
+            if (!reduced) row.style.transform = "translateX(8px)";
+            var mark = row.querySelector("[data-mark]");
+            if (mark) mark.style.opacity = "1";
+            var title = row.querySelector("[data-title]");
+            if (title) title.style.color = "#000";
+            var d = row.querySelector("[data-detail]");
+            if (d) {
+              d.style.gridTemplateRows = "1fr";
+              d.style.opacity = "1";
+            }
+          };
+          var off = function () {
+            row.style.transform = "translateX(0)";
+            var mark = row.querySelector("[data-mark]");
+            if (mark) mark.style.opacity = "0";
+            var title = row.querySelector("[data-title]");
+            if (title) title.style.color = "#1B1917";
+            var d = row.querySelector("[data-detail]");
+            if (d) {
+              d.style.gridTemplateRows = "0fr";
+              d.style.opacity = "0";
+            }
+          };
+          row.addEventListener("mouseenter", on);
+          row.addEventListener("mouseleave", off);
+          row.addEventListener("focus", on);
+          row.addEventListener("blur", off);
+        });
+
+        var glyph = document.getElementById("glyph-ma");
+        var sections = ["work", "about", "contact"]
+          .map(function (id) {
+            return document.getElementById(id);
+          })
+          .filter(Boolean);
+        function onScroll() {
+          if (glyph && !reduced) {
+            var r = glyph.getBoundingClientRect();
+            var p =
+              (r.top + r.height / 2 - window.innerHeight / 2) /
+              window.innerHeight;
+            glyph.style.transform = "translateY(" + (p * 36).toFixed(1) + "px)";
+          }
+          var current = null;
+          sections.forEach(function (s) {
+            if (s.getBoundingClientRect().top < window.innerHeight * 0.4)
+              current = s.id;
+          });
+          document.querySelectorAll("[data-nav]").forEach(function (a) {
+            var dot = a.querySelector("[data-navdot]");
+            if (dot)
+              dot.style.opacity =
+                a.getAttribute("data-nav") === current ? "1" : "0";
+          });
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+  </body>
+</html>
