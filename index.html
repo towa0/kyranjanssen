@@ -3,18 +3,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kyran Janssen</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Sans:wght@400;500&display=swap"
-      rel="stylesheet"
+    <title>Kyran Janssen, web developer and automation engineer</title>
+    <meta
+      name="description"
+      content="Kyran Janssen builds websites, web apps and the automation behind them: Next.js, TypeScript, Sanity and Python data pipelines. Based in Finland, working worldwide."
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&text=%E9%9B%A8%E9%96%93&display=swap"
-      rel="stylesheet"
+    <meta name="theme-color" content="#faf8f4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kyran Janssen, web developer and automation engineer" />
+    <meta
+      property="og:description"
+      content="Websites, web apps and the automation behind them. Based in Finland, working worldwide."
     />
+    <meta property="og:image" content="og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b1917'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23c8402f'/%3E%3C/svg%3E"
+    />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        document.documentElement.classList.add("intro-on", "intro-hold");
+    </script>
     <style>
+      @font-face {
+        font-family: "Newsreader";
+        font-style: normal;
+        font-weight: 400 500;
+        font-display: swap;
+        src: url(fonts/newsreader-latin.woff2) format("woff2");
+      }
+      @font-face {
+        font-family: "Instrument Sans";
+        font-style: normal;
+        font-weight: 400 500;
+        font-display: swap;
+        src: url(fonts/instrument-sans-latin.woff2) format("woff2");
+      }
+      @font-face {
+        font-family: "Noto Serif JP";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(fonts/noto-serif-jp-ame-ma.woff2) format("woff2");
+        unicode-range: U+9593, U+96E8;
+      }
       :root {
         --accent: #c8402f;
       }
@@ -42,6 +80,21 @@
       :focus-visible {
         outline: 2px solid var(--accent);
         outline-offset: 3px;
+      }
+      .skip {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 200;
+        padding: 10px 16px;
+        background: #1b1917;
+        color: #faf8f4;
+        font-size: 14px;
+        text-decoration: none;
+        transform: translateY(-200%);
+      }
+      .skip:focus {
+        transform: none;
       }
       ::selection {
         background: #e4dfd7;
@@ -103,7 +156,7 @@
         font-size: 13px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #8a857e;
+        color: #6b665f;
       }
       .navlinks {
         display: flex;
@@ -114,7 +167,7 @@
         letter-spacing: 0.12em;
         text-transform: uppercase;
         text-decoration: none;
-        color: #8a857e;
+        color: #6b665f;
         position: relative;
         transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
@@ -172,35 +225,6 @@
         max-width: 46ch;
         color: #1b1917;
       }
-      .emailrow {
-        overflow: hidden;
-        margin-top: 28px;
-      }
-      .emailrow-inner {
-        animation: wipeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
-        display: flex;
-        align-items: baseline;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .emailrow a {
-        font-size: 15px;
-      }
-      .copybtn {
-        font-family: "Instrument Sans", sans-serif;
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #8a857e;
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: color 0.4s;
-      }
-      .copybtn:hover {
-        color: #1b1917;
-      }
       section {
         border-top: 1px solid #e4dfd7;
         padding: clamp(72px, 10vh, 130px) 0 clamp(80px, 12vh, 150px) 0;
@@ -211,7 +235,7 @@
         font-weight: 500;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #8a857e;
+        color: #6b665f;
       }
       .grid2 {
         display: grid;
@@ -228,7 +252,7 @@
       .num {
         font-family: "Newsreader", serif;
         font-size: 48px;
-        color: #8a857e;
+        color: #6b665f;
         line-height: 1;
       }
       .service h3 {
@@ -288,18 +312,18 @@
         font-size: 11px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #8a857e;
+        color: #6b665f;
       }
       .year {
         font-size: 13px;
-        color: #8a857e;
+        color: #6b665f;
         font-variant-numeric: tabular-nums;
       }
       .desc {
         margin: 8px 0 0 0;
         font-size: 15px;
         line-height: 1.7;
-        color: #8a857e;
+        color: #6b665f;
         max-width: 60ch;
       }
       .detailwrap {
@@ -322,7 +346,7 @@
       .colophon {
         margin: 40px 0 0 0;
         font-size: 14px;
-        color: #8a857e;
+        color: #6b665f;
         line-height: 1.7;
       }
       .colophon .kanji {
@@ -395,7 +419,7 @@
         font-size: 12px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #8a857e;
+        color: #6b665f;
       }
       .dot {
         width: 7px;
@@ -404,6 +428,154 @@
         background: var(--accent);
         display: inline-block;
       }
+      /* Intro: rain falls, 雨 inks in, seal stamps, curtain lifts in strips */
+      .intro {
+        display: none;
+      }
+      .intro-hold body {
+        overflow: hidden;
+      }
+      .intro-on .intro {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        pointer-events: none;
+      }
+      .intro-hold h1 .line,
+      .intro-hold .seal,
+      .intro-hold .lede p {
+        animation-play-state: paused;
+      }
+      .intro-strips {
+        position: absolute;
+        inset: 0;
+        display: flex;
+      }
+      .intro-strips span {
+        flex: 1;
+        height: 100%;
+        margin-right: -1px;
+        background: #1b1917;
+        transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+      }
+      .intro.leave .intro-strips span {
+        transform: translateY(-101%);
+      }
+      .intro-stage {
+        position: absolute;
+        inset: 0;
+        transition:
+          opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .intro.leave .intro-stage {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      .intro-rain {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .intro-rain i {
+        position: absolute;
+        top: 0;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          rgba(250, 248, 244, 0),
+          rgba(250, 248, 244, 0.35)
+        );
+        animation: rainFall linear infinite;
+      }
+      @keyframes rainFall {
+        from {
+          transform: translateY(-120%);
+        }
+        to {
+          transform: translateY(110vh);
+        }
+      }
+      .intro-center {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+      }
+      .intro-mark {
+        position: relative;
+      }
+      .intro-kanji {
+        display: block;
+        font-family: "Noto Serif JP", serif;
+        font-size: clamp(120px, 24vw, 260px);
+        line-height: 1;
+        color: #faf8f4;
+        clip-path: inset(0 0 100% 0);
+        filter: blur(8px);
+        animation: inkIn 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+      }
+      @keyframes inkIn {
+        60% {
+          filter: blur(0);
+        }
+        to {
+          clip-path: inset(0 0 0 0);
+          filter: blur(0);
+        }
+      }
+      .intro-stamp {
+        position: absolute;
+        right: -0.18em;
+        bottom: 0.04em;
+        width: 0.2em;
+        height: 0.2em;
+        font-size: clamp(120px, 24vw, 260px);
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0;
+        animation: stamp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.25s forwards;
+      }
+      @keyframes stamp {
+        from {
+          opacity: 0;
+          transform: scale(2.4);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .intro-meta {
+        position: absolute;
+        left: clamp(16px, 4vw, 56px);
+        right: clamp(16px, 4vw, 56px);
+        bottom: clamp(24px, 5vh, 48px);
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(250, 248, 244, 0.55);
+        font-variant-numeric: tabular-nums;
+      }
+      .intro-bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -14px;
+        height: 1px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: barFill 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+      @keyframes barFill {
+        to {
+          transform: scaleX(1);
+        }
+      }
       [data-reveal] {
         opacity: 0;
         transform: translateY(12px) scale(0.98);
@@ -411,6 +583,27 @@
     </style>
   </head>
   <body>
+    <div class="intro" id="intro" aria-hidden="true">
+      <div class="intro-strips">
+        <span></span><span></span><span></span><span></span><span></span
+        ><span></span>
+      </div>
+      <div class="intro-stage">
+        <div class="intro-rain" id="introRain"></div>
+        <div class="intro-center">
+          <div class="intro-mark">
+            <span class="intro-kanji">雨</span>
+            <span class="intro-stamp"></span>
+          </div>
+        </div>
+        <div class="intro-meta">
+          <span>Kyran Janssen</span>
+          <span id="introCount">000</span>
+          <span class="intro-bar"></span>
+        </div>
+      </div>
+    </div>
+    <a class="skip" href="#main">Skip to content</a>
     <div class="page">
       <div class="spine" aria-hidden="true"></div>
       <div class="wrap">
@@ -432,6 +625,7 @@
           </div>
         </nav>
 
+        <main id="main" tabindex="-1">
         <header>
           <h1>
             <span class="clip"
@@ -446,17 +640,9 @@
           </h1>
           <div class="lede">
             <p>
-              Web and app development, and the automation behind it.<br />Netherlands,
+              Web and app development, and the automation behind it.<br />Based in Finland,
               working worldwide.
             </p>
-          </div>
-          <div class="emailrow">
-            <div class="emailrow-inner">
-              <a href="mailto:kyran.janssen@proton.me"
-                >kyran.janssen@proton.me</a
-              >
-              <button class="copybtn" id="copyBtn" type="button">Copy</button>
-            </div>
           </div>
         </header>
 
@@ -491,7 +677,7 @@
           <div class="worklist" id="worklist"></div>
           <p class="colophon" data-reveal>
             <span class="kanji" aria-hidden="true">雨</span>Several of these
-            live under <a href="#">Rainvalley</a>, my solo software studio.
+            live under <a href="https://www.rainvalley.nl" target="_blank" rel="noopener">Rainvalley</a>, my solo software studio.
           </p>
         </section>
 
@@ -508,16 +694,14 @@
             </h2>
             <div data-reveal>
               <p>
-                Based in the Netherlands. Four years owning the frontend across
-                high traffic platforms, while building and shipping my own
+                Four years owning the frontend across high traffic platforms, while building and shipping my own
                 products on the side, from comparison engines to coordination
                 software. I prefer software that lasts: built calmly, documented
-                properly, no ceremony. Contact If you have something worth
-                building, or worth automating, write.
+                properly, no ceremony.
               </p>
               <p>
                 Open to work, and to problems that are more interesting than
-                they look. Email is best.
+                they look.
               </p>
             </div>
           </div>
@@ -539,7 +723,6 @@
                 write.
               </p>
               <div class="contactlinks">
-                <a href="mailto:kyran.janssen@proton.me">Email</a>
                 <a href="https://linkedin.com/in/kyranjanssen">LinkedIn</a>
                 <a href="https://github.com/towa0">GitHub</a>
               </div>
@@ -587,6 +770,8 @@
           </svg>
         </section>
 
+        </main>
+
         <footer>
           <span class="footname">Kyran Janssen &middot; 2026</span>
           <span class="dot" aria-hidden="true"></span>
@@ -595,6 +780,53 @@
     </div>
 
     <script>
+      (function () {
+        var root = document.documentElement;
+        var intro = document.getElementById("intro");
+        if (!root.classList.contains("intro-on")) {
+          intro.remove();
+          return;
+        }
+
+        var rain = document.getElementById("introRain");
+        for (var i = 0; i < 46; i++) {
+          var drop = document.createElement("i");
+          drop.style.left = (Math.random() * 100).toFixed(2) + "%";
+          drop.style.height = (60 + Math.random() * 140).toFixed(0) + "px";
+          drop.style.opacity = (0.3 + Math.random() * 0.7).toFixed(2);
+          drop.style.animationDuration =
+            (0.55 + Math.random() * 0.6).toFixed(2) + "s";
+          drop.style.animationDelay = (-Math.random() * 1.2).toFixed(2) + "s";
+          rain.appendChild(drop);
+        }
+
+        var count = document.getElementById("introCount");
+        var duration = 1500;
+        var t0 = performance.now();
+        (function tick(now) {
+          var p = Math.min((now - t0) / duration, 1);
+          var eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+          count.textContent = String(Math.round(eased * 100)).padStart(3, "0");
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+
+        var strips = intro.querySelectorAll(".intro-strips span");
+        strips.forEach(function (s, i) {
+          s.style.transitionDelay = (0.12 + i * 0.07).toFixed(2) + "s";
+        });
+
+        setTimeout(function () {
+          intro.classList.add("leave");
+          setTimeout(function () {
+            root.classList.remove("intro-hold");
+          }, 450);
+          setTimeout(function () {
+            root.classList.remove("intro-on");
+            intro.remove();
+          }, 1800);
+        }, 1850);
+      })();
+
       (function () {
         var WORKS = [
           {
@@ -669,19 +901,6 @@
           row.querySelector(".desc").textContent = item.desc;
           row.querySelector(".detail").textContent = item.detail;
           list.appendChild(row);
-        });
-
-        var copyBtn = document.getElementById("copyBtn");
-        var copyTimer;
-        copyBtn.addEventListener("click", function () {
-          navigator.clipboard
-            .writeText("kyran.janssen@proton.me")
-            .catch(function () {});
-          copyBtn.textContent = "Copied";
-          clearTimeout(copyTimer);
-          copyTimer = setTimeout(function () {
-            copyBtn.textContent = "Copy";
-          }, 2200);
         });
 
         var reduced = window.matchMedia(
